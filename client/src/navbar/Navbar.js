@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function NavBar(){
     return(
-        <div className="flex text-white px-20 py-5 bg-gray-900">
+        <div className="flex text-white px-20 py-3 bg-black">
             <div className="flex items-center flex-1">
                 <span className="text-3x1 font-bold">ExploreKe</span>
             </div>
