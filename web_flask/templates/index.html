@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/nav.css">
+    <title>{% block title %}ExploreKE{% endblock %}</title>
+    <style>
+        body {
+            background-image: url("images/explore.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+    {% block additional_head %}{% endblock %}
+</head>
+<body>
+    <div class="nav">
+        <a class="active" href="#">Home</a>
+        <a href="articles.html">Articles</a>
+        <input type="text" placeholder="Search..">
+        <a href="#" class="split">Login</a>
+    </div>
+    <p class="slog">{% block slogan %}UNLOCKING THE HEART OF ADVENTURE{% endblock %}</p>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="footer">
+        <p>&copy; 2023 ExploreKE</p>
+    </div>
+    {% block additional_scripts %}{% endblock %}
+</body>
+</html>
