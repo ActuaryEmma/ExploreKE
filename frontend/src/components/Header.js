@@ -12,7 +12,10 @@ const Header = () => {
                     <li className='cursor-pointer font-medium hover:text-green-300'>ABOUT US</li>
                 </ul>
 
-                <IoMdLogIn size={28} className='lg:hidden'/>
+            </div>
+            <IoMdLogIn size={28} className='w-full lg:flex pr-0'/>
+            <div>
+
             </div>
         </div>
     )
