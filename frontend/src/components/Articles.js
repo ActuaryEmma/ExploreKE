@@ -1,4 +1,5 @@
 import Card from "./Card"
+
 const Articles = () =>{
     return(
         <div className="w-full">
