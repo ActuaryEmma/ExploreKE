@@ -1,4 +1,5 @@
 import bg from "../images/explore.jpg";
+import Card from "./Card";
 
 
 const Home = () => {
@@ -11,9 +12,15 @@ const Home = () => {
       }
     
       return (
-        <main className="h-screen w-screen box-border m-0 overflow-hidden" style={styles}>
-            <div className="flex items-center justify-center w-1/2"></div>
-            <p> UNLOCKING THE HEART OF ADVENTURE</p>
+        <main className="h-screen w-screen box-border m-0" style={styles}>
+            <div className="left-0 w-1/2 p-60 justify-center">
+              <h3 className="font-semibold ">UNLOCKING THE HEART OF ADVENTURE</h3>
+            </div>
+
+            <div className="just">
+              <h2>Top Locations</h2>
+              <Card />
+            </div>
         </main>
       );
     }

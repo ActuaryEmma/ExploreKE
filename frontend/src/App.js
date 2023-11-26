@@ -5,9 +5,11 @@ import Header from "./components/Header";
 import About from "./components/About";
 import Home from "./components/Home";
 import {Route, Routes, BrowserRouter} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
 //import MidSection from "./components/MidSection"
 
 function App() {
+
   return(
     <BrowserRouter>
     <div>

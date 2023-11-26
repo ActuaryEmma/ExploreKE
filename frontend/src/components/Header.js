@@ -1,5 +1,5 @@
 import React from 'react'
-//import { IoMdLogIn } from 'react-icons/io';
+import { CiMenuKebab } from 'react-icons/ci';
 import {Link} from 'react-router-dom';
 
 
@@ -16,9 +16,9 @@ const Header = () => {
                     <li className='cursor-pointer font-medium hover:text-green-300'><Link to="/articles">ARTICLES</Link></li>
                     <li className='cursor-pointer font-medium hover:text-green-300'><Link to="/about">ABOUT US</Link></li>
                 </ul>
-
             </div>
-            {/*<IoMdLogIn size={28} className='ml-0'/>*/}
+
+            <CiMenuKebab size={28} className='hidden ml-0'/>
             <div className='flex items-center p-10'>
             <p className='cursor-pointer font-medium hover:text-green-300'><Link to="#">SignUp/LogIn</Link></p>
             </div>
