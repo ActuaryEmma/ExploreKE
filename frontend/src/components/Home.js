@@ -28,7 +28,6 @@ const Home = () => {
 
             <div className="just">
               <h2>Top Locations</h2>
-              <Card />
             </div>
         </main>
       );
