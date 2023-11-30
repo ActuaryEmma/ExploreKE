@@ -1,8 +1,17 @@
 import bg from "../images/explore.jpg";
 import Card from "./Card";
+import axios from'axios';
+import React, { useEffect, useState } from 'react';
 
 
 const Home = () => {
+    const [data, serData] = useState('');
+      useEffect(() => {
+       axios.get('/api/home')
+          .then(response => SVGMetadataElement(response.data))
+          .catch(error => console.error('Error fetching data'));
+      }, []);
+    
     const styles = {
         backgroundImage: `url(${bg})`,
         backgroundSize: 'cover',
@@ -23,5 +32,5 @@ const Home = () => {
             </div>
         </main>
       );
-    }
+}
 export default Home
