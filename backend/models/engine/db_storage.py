@@ -2,13 +2,14 @@
 """" Database management configuration """
 import models.tables as tables
 import sqlalchemy
-from sqlalchemy import Column, ForeignKey, Integer, String, create_engine
-from sqlalchemy.orm import declarative_base, relationship, scoped_session, sessionmaker
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
 from models.tables import User, Categories, Comments, Article
 from models.base_model import BaseModel, Base
 
 
-classes = {"User": User, "Categories": Categories, "Article": Article, "Comments": Comments}
+classes = {"User": User, "Categories": Categories,
+           "Article": Article, "Comments": Comments}
 
 class DBStorage:
     """ Creates the connection to MySql """

@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """ Initialize the models package """
-from .engine.db_storage import DBStorage
+from backend.models.engine.db_storage import DBStorage
 
 storage = DBStorage()
 storage.reload()
