@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Database schema for ExploreKe """
-from models.base_model import BaseModel, Base
+from base_model import BaseModel, Base
 from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, func
 from sqlalchemy.orm import declarative_base, relationship
 from datetime import datetime

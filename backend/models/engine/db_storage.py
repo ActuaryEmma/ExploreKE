@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """" Database management configuration """
-import models.tables as tables
+import backend.models.tables as tables
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from models.tables import User, Categories, Comments, Article
-from models.base_model import BaseModel, Base
+from backend.models.tables import User, Categories, Comments, Article
+from backend.models.base_model import BaseModel, Base
 
 
 classes = {"User": User, "Categories": Categories,
