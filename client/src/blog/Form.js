@@ -1,31 +1,35 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-function Form({article}) {
-  const[title, setTitle] = useState('')
-  const[body, setBody] = useState('')
+function Form({ title, content, setTitle, setContent, updateArticle}) {
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleContentChange = (e) => {
+    setContent(e.target.value);
+  };
+
   return (
-    <div>
-      {article ? (
-        <div>
-          <label htmlFor="title" className="form-label">
-            Title
-          </label>
-          <input
-            type="text"
-            id="title"
-            className="form-control"
-            placeholder="Please Enter Title"
-          />
-          <label htmlFor="body" className="form-label">
-            Description
-          </label>
-          <textarea
-            id="body"
-            className="form-control"
-            placeholder="Please Enter Description"
-          />
-        </div>
-      ) : null}
+    <div className="p-4 border">
+      <input
+        className="w-full border rounded mb-2 p-2"
+        type="text"
+        value={title}
+        onChange={handleTitleChange}
+        placeholder="Title"
+      />
+      <textarea
+        className="w-full border rounded p-2"
+        value={content}
+        onChange={handleContentChange}
+        placeholder="Content"
+      />
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
+        onClick={updateArticle}
+      >
+        Save
+      </button>
     </div>
   );
 }

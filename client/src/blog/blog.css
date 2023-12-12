@@ -1,0 +1,44 @@
+.editbtn {
+    background-color: black;
+    color: rgb(58, 238, 42);
+    border-radius: 40px;
+    padding: 3px 20px;
+    margin-right: 10px;
+    
+
+}
+.deletebtn {
+    background-color: black;
+    color: rgb(252, 247, 246);
+    border-radius: 40px;
+    padding: 3px 20px;
+    
+
+}
+.editbtn:hover{
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+}
+.newbtn {
+    background-color: black;
+    color: rgb(252, 247, 246);
+    border-radius: 40px;
+    padding: 3px 20px;
+    margin-left: 700px;
+    margin-top: 10px;
+    
+
+}
+.post{
+    /* align-items: center; */
+ /* position: relative; */
+ /* display: flex; */
+ margin-left: 400px;
+ /* margin-right: 300px; */
+ width: 700px;
+ background-color: white;
+}
+.paragraph{
+    width: 700px;
+    margin-right: 200px;
+}
