@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """ BaseModel from which all classes will be derieved """
-
-
 from datetime import datetime
-import tables as tables
+from models import tables
 from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String, DateTime
@@ -47,10 +45,11 @@ class BaseModel:
                                          self.__dict__)
     
     def save(self):
+        import models
         """updates the attribute 'updated_at' with the current datetime"""
         self.updated_at = datetime.utcnow()
-        tables.storage.new(self)
-        tables.storage.save()
+        models.storage.new(self)
+        models.storage.save()
 
     def to_dict(self, save_fs=None):
         """returns a dictionary containing all keys/values of the instance"""

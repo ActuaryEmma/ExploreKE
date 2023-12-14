@@ -1,6 +1,6 @@
 import React from 'react';
 import Articles from "./components/Articles";
-//import bg from "./images/explore.jpg";
+import NewPost from "./components/NewArticle";
 import Header from "./components/Header";
 import About from "./components/About";
 import Home from "./components/Home";
@@ -9,6 +9,19 @@ import {useState, useEffect} from 'react';
 //import MidSection from "./components/MidSection"
 
 function App() {
+  const [articles, setArticles] = useState([]);
+  useEffect(()=>{
+    fetch('http://localhost:5000/articles',{
+      'methods':'GET',
+      headers : {
+        'content-Type':'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(response => setArticles(response))
+    .catch(error => console.log(error))
+
+  },[])
 
   return(
     <BrowserRouter>
@@ -18,7 +31,7 @@ function App() {
 
     <Routes>
       <Route path='/' element={<Home />}></Route>
-      <Route path='/articles' element={<Articles />}></Route>
+      <Route path='/articles' element={<Articles articles={articles} />}></Route>
       <Route path='/about' element={<About />}></Route>
     </Routes>
     </BrowserRouter>

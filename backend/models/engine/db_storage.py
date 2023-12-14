@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """" Database management configuration """
-import backend.models.tables as tables
+import models
+from models import tables, base_model
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from backend.models.tables import User, Categories, Comments, Article
-from backend.models.base_model import BaseModel, Base
+from models.tables import User, Categories, Comments, Article
+from models.base_model import BaseModel, Base
 
 
 classes = {"User": User, "Categories": Categories,
@@ -51,3 +52,22 @@ class DBStorage:
         """ Delete provided obj from the current db session """
         if obj is not None:
             self.__session.delete(obj)
+
+    def get(self, cls, id):
+        """
+        Returns the object based on the class name and its ID, or
+        None if not found
+        """
+        if cls not in classes.values():
+            return None
+
+        all_cls = models.storage.all(cls)
+        for value in all_cls.values():
+            if (value.id == id):
+                return value
+
+        return None
+    
+    def close(self):
+        """call remove() method on the private session attribute"""
+        self.__session.remove()
