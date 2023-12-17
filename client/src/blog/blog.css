@@ -53,3 +53,17 @@
     /* word-wrap: break-word;  */
     /* word-break: break-word;  */
 }
+.singlePost{
+    justify-content: 'center',;
+    align-items: 'center';
+    margin: 20px 0px 0px 400px;
+    width: 700px;
+}
+.singleParagraph{
+    margin-bottom: 15px;
+    width: 600px;
+    margin-right: 200px;
+    overflow: hidden;
+    overflow-wrap: break-word; 
+
+}

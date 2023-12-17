@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './blog.css'
 
 function FullArticle() {
   const { articleId } = useParams(); // Get the articleId from the URL params
@@ -18,11 +19,29 @@ function FullArticle() {
   }
 
   return (
-    <div className="full-article">
-      <h1>{article.title}</h1>
-      <p>{article.content}</p>
-      <p>{article.formatted_date}</p>
-      {/* Other details you want to display */}
+    <div className="singlePost">
+        <div style={{display: 'flex', fontStyle: 'italic', paddingBottom: '5px'}}>
+              <p>By:Joe Doe</p>
+            
+              <p style={{paddingLeft: '10px'}}>{article.new_date}</p>
+              </div>
+        <h1>{article.title}</h1>
+        <p className="singleParagraph">{article.content}</p>
+        {/* <div style={{paddingBottom: 15, justifyContent: 'right', alignContent: 'right'}}>
+              <button
+                class="editbtn"
+                onClick={() => handleEditArticle(article)}
+              >
+                <FaEdit/>
+              </button>
+              <button
+                className="deletebtn"
+                onClick={() => deleteArticle(article.id)}
+              >
+                <FaTrash/>
+              </button>
+            </div> */}
+    
     </div>
   );
 }
