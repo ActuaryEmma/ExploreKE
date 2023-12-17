@@ -25,7 +25,7 @@ function Form({ title, content, setTitle, setContent, updateArticle}) {
         placeholder="Content"
       />
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
+        className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded mt-2"
         onClick={updateArticle}
       >
         Save

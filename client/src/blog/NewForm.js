@@ -37,7 +37,7 @@ function NewForm({ title, content, setTitle, setContent,insertArticle}) {
           placeholder="Content"
         />
         <input
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 cursor-pointer"
+          className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded mt-2 cursor-pointer"
           type="submit"
           value="Send"
         />
