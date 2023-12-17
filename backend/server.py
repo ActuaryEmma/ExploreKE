@@ -39,7 +39,7 @@ def get_articles():
     results = articles_schema.dump(all_articles)
     return jsonify(results)
 
-@app.route('/get/<id>/', methods = ['GET'])
+@app.route('/article/<id>/', methods = ['GET'])
 def get_article(id):
     article = Article.query.get(id)
     return article_schema.jsonify(article)

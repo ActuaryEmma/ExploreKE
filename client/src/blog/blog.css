@@ -39,6 +39,14 @@
  background-color: white;
 }
 .paragraph{
-    width: 700px;
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 3; 
+    width: 500px;
     margin-right: 200px;
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
+    overflow-wrap: break-word; 
+    /* word-wrap: break-word;  */
+    /* word-break: break-word;  */
 }

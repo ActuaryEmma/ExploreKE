@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import Form from './Form';
 import NewForm from './NewForm';
 import './blog.css'
@@ -9,6 +10,12 @@ function Blog({ articles, editArticle, setArticles }) {
 
   const [editedTitle, setEditedTitle] = useState('');
   const [editedContent, setEditedContent] = useState('');
+  // const navigate = useNavigate();
+
+  // const handleViewArticle = (articleId) => {
+  //   // Redirect to a new page to view the full article
+  //   navigate(`/article/${articleId}`);
+  // };
 
   useEffect(() => {
     fetch(`get`)
@@ -130,8 +137,20 @@ function Blog({ articles, editArticle, setArticles }) {
         <div className="post">
         {articles.map((article) => (
           <div key={article.id} style = {{padding: 20}}>
-            <h2 className="font-bold">{article.title}</h2>
-            <p className="paragraph">{article.content}</p>
+            <h2 className="font-bold">
+              <Link to={`/article/${article.id}`}>{article.title} </Link>
+              </h2>
+            <p className="paragraph">
+              <Link to={`/article/${article.id}`}>{article.content}</Link>
+              </p>
+            {/* <div>
+                <button
+                  className="viewbtn"
+                  onClick={() => handleViewArticle(article.id)}
+                >
+                  
+                </button>
+              </div> */}
 
             <div className="">
               <button
