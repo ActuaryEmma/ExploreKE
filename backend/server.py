@@ -13,7 +13,7 @@ from datetime import datetime
 app = Flask(__name__)
 cors = CORS(app)
 
-# Article routes 
+# Article routes - CRUD operations for article operations
 @app.route("/articles", methods=["GET"],strict_slashes=False)
 def get_articles():
    """ Retrieve a list of all articles """
@@ -41,7 +41,6 @@ def post_article():
    body = data['body']
    author_id = data.get('author_id', None)
    category_id = data.get('category_id', None)
-   
    articles = Article(
       title=title,
       body=body,
@@ -82,6 +81,42 @@ def delete_article(id):
    storage.save()
 
    return make_response(jsonify({}), 200)
+
+# User, comments routes
+@app.route('/users', methods=['GET'], strict_slashes=False)
+def get_users():
+   """ Returns a list of all users """
+   users = storage.all(User).values()
+   result = [user.to_dict() for user in users]
+   return jsonify(result)
+
+@app.route('/user/<id>', methods=['GET'], strict_slashes=False)
+def get_user(id):
+   """ Returns User of given id """
+   user = storage.get(User, id)
+   if not user:
+      abort(404)
+   return jsonify(user)
+
+@app.route('/adduser', methods=['POST'], strict_slashes=False)
+def create_user():
+   """ Creates a new User """
+   data = request.get_json()
+
+   if 'name' not in data or 'email' not in data:
+      return jsonify({"error": "Missing requirement! Check your details and try again"})
+   
+   name = data['name']
+   email = data['email']
+
+   user = User(
+      name=name,
+      email=email
+   )
+
+   storage.new(user)
+   storage.save()
+   return jsonify({"message": "User Created successfully"})
 
 
 if __name__ == '__main__':

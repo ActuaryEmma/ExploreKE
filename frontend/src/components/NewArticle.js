@@ -1,55 +1,56 @@
 import React, { useState } from 'react';
 
-const NewArticle = ()=>{
-    const [title, setTitle] = useState("");
-    const [body, setBody] = useState("");
+const NewArticle = () =>{
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
 
-    function handleTitleChange(event) {
-        setTitle(event.target.value)
-    }
-    function handleBodyChange(event) {
-        setBody(event.target.value)
-    }
-
-async function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const article = { title, body };
-    const response = await fetch("/post", {
+
+    if (!title || !body) {
+      alert("Missing 'title' or 'body' ");
+      return;
+    }
+    try {
+      const response = await fetch(`/newarticle`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(article)
-    });
-    if (response.ok) {
-        console.log("Article Posted");
-    } else {
-        console.error("Something went wrong")
+        body: JSON.stringify({
+          title,
+          body,
+        }),
+      });
+      if (response.status === 201) {
+        alert("Article Successfully Posted");
+      }
+    } catch (error) {
+      console.error('Error:', error);
     }
-}
-
-return (
-    <div className="p-4 border">
-      <input
-        className="w-full border rounded mb-2 p-2"
-        type="text"
-        value={title}
-        onChange={handleTitleChange}
-        placeholder="Title"
-      />
-      <textarea
-        className="w-full border rounded p-2"
-        value={body}
-        onChange={handleBodyChange}
-        placeholder="Content"
-      />
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
-      >
-        Save
-      </button>
+  };
+  return(
+    <div className='max-h mx-auto p-6 rounded-md'>
+      <form onSubmit={handleSubmit} className='mt-6 '>
+        <label class="block text-sm font-medium text-green-600">
+          Title: 
+          <input type="text" value={title} onChange={e => setTitle(e.target.value)} class="mt-1 p-2 w-full border-none"
+          required />
+        </label>
+        <label class="block text-sm font-medium text-green-600">
+          Body:
+          <textarea value={body} onChange={e => setBody(e.target.value)} class="mt-1 p-2 w-full text-black border-none rounded-md" defaultValue="Document your journey..."
+          required/>
+        </label>
+        {/*
+        <label class="block text-sm border-none font-medium text-green-600">
+          Media:
+          <input type="image" class="mt-1 p-2 w-full border rounded-md" alt='supporting' />
+        </label>
+        */}
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 m-3"> PUBLISH </button>
+      </form>
     </div>
   );
 };
-
 export default NewArticle;
