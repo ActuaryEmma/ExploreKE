@@ -21,6 +21,7 @@ function FullArticle() {
     <div className="full-article">
       <h1>{article.title}</h1>
       <p>{article.content}</p>
+      <p>{article.formatted_date}</p>
       {/* Other details you want to display */}
     </div>
   );

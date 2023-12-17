@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import { useNavigate, Link } from 'react-router-dom';
 import Form from './Form';
 import NewForm from './NewForm';
@@ -123,7 +124,7 @@ function Blog({ articles, editArticle, setArticles }) {
   };
 
   return (
-    <div className="mainpost" style={{ backgroundColor: '#92400e'}} >
+    <div className="mainpost" style={{}} >
       <div style={{justifyContent: 'center', alignItems: 'right', display: 'flex' }}>
       <button
         className="newbtn"
@@ -136,8 +137,13 @@ function Blog({ articles, editArticle, setArticles }) {
       <div className="">
         <div className="post">
         {articles.map((article) => (
-          <div key={article.id} style = {{padding: 20}}>
-            <h2 className="font-bold">
+          <div key={article.id} style = {{paddingBottom: 15}}>
+            <div style={{display: 'flex', fontStyle: 'italic', paddingBottom: '5px'}}>
+              <p>By:Joe Doe</p>
+            
+              <p style={{paddingLeft: '10px'}}>{article.new_date}</p>
+              </div>
+              <h2 style={{fontSize:'20px', fontWeight: 'bold' }}>
               <Link to={`/article/${article.id}`}>{article.title} </Link>
               </h2>
             <p className="paragraph">
@@ -152,18 +158,18 @@ function Blog({ articles, editArticle, setArticles }) {
                 </button>
               </div> */}
 
-            <div className="">
+            <div style={{paddingBottom: 15, justifyContent: 'right', alignContent: 'right'}}>
               <button
                 class="editbtn"
                 onClick={() => handleEditArticle(article)}
               >
-                Edit
+                <FaEdit/>
               </button>
               <button
                 className="deletebtn"
                 onClick={() => deleteArticle(article.id)}
               >
-                Delete
+                <FaTrash/>
               </button>
             </div>
             <hr/>

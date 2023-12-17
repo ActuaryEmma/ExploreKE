@@ -23,9 +23,16 @@ class Article(db.Model):
         self.title = title
         self.content = content
 
+    @property
+    def formatted_date(self):
+        return self.postDate.strftime("%b %d %Y")
+    @property
+    def new_date(self):
+        return self.postDate.strftime("%b %d")
+
 class ArticleSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'title', 'content', 'postDate')
+        fields = ('id', 'title', 'content', 'postDate', 'formatted_date', 'new_date')
 
 
 
