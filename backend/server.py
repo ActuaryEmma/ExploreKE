@@ -7,7 +7,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://nyakio:password@localhost/ExploreKe'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://devbrian:exploreKe_pwd@localhost/exploreKe'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
