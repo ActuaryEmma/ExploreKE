@@ -20,12 +20,12 @@ function FullArticle() {
 
   return (
     <div className="singlePost">
-        <div style={{display: 'flex', fontStyle: 'italic', paddingBottom: '5px'}}>
+        <div style={{display: 'flex', fontStyle: 'italic', paddingBottom: '5px', color: 'green'}}>
               <p>By:Joe Doe</p>
             
               <p style={{paddingLeft: '10px'}}>{article.new_date}</p>
               </div>
-        <h1>{article.title}</h1>
+        <h1 style={{fontSize:'20px', fontWeight: 'bold'}}>{article.title}</h1>
         <p className="singleParagraph">{article.content}</p>
         {/* <div style={{paddingBottom: 15, justifyContent: 'right', alignContent: 'right'}}>
               <button
