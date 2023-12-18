@@ -1,5 +1,6 @@
 import React from "react"
 import "./about.css"
+import {Link} from 'react-router-dom'
 
 function About(){
     return(
@@ -45,6 +46,13 @@ function About(){
             <p class=" mb-4">
                 Thank you for choosing ExploreKE as your guide to unparalleled adventures in Kenya. Let's embark on this exciting journey together and make every moment count!
             </p>
+            <p>Git repository : <a href="https://github.com/ActuaryEmma/ExploreKE" target="_blank">ExploreKe Repo</a></p>
+            <p>LinkedIn : <a href="https://www.linkedin.com/in/emma-nyakio/" target="_blank">ActuaryEmma</a></p>
+            <p>Git repository : <a href="" target="_blank">Brian Omondi</a></p>
+
+
+
+
             </div>
         </div>
        
