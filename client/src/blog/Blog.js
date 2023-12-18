@@ -138,7 +138,7 @@ function Blog({ articles, editArticle, setArticles }) {
         <div className="post">
         {articles.map((article) => (
           <div key={article.id} style = {{paddingBottom: 15}}>
-            <div style={{display: 'flex', fontStyle: 'italic', paddingBottom: '5px'}}>
+            <div style={{display: 'flex', fontStyle: 'italic', paddingBottom: '5px', color: 'green'}}>
               <p>By:Joe Doe</p>
             
               <p style={{paddingLeft: '10px'}}>{article.new_date}</p>
