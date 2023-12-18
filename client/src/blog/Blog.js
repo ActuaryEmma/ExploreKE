@@ -11,6 +11,7 @@ function Blog({ articles, editArticle, setArticles }) {
 
   const [editedTitle, setEditedTitle] = useState('');
   const [editedContent, setEditedContent] = useState('');
+  const  navigate = useNavigate();
   // const navigate = useNavigate();
 
   // const handleViewArticle = (articleId) => {
@@ -32,6 +33,7 @@ function Blog({ articles, editArticle, setArticles }) {
   };
 
   const addNewArticle = () => {
+    navigate('/new-article');
     setIsAddingNewArticle(true);
     setEditedArticle(null);
     setEditedTitle('');

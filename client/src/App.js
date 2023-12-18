@@ -7,6 +7,7 @@ import NavBar from './navbar/Navbar';
 import Blog from './blog/Blog';
 import Contact from './contact/Contact';
 import FullArticle from './blog/FullArticle';
+import NewForm from './blog/NewForm';
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -38,6 +39,7 @@ function App() {
         />
         <Route path="/contact" element={<Contact />} />
         <Route path="/article/:articleId" element={<FullArticle/>} />
+        <Route path="/new-article" element={<NewForm />}/>
       </Routes>
     </BrowserRouter>
   );
