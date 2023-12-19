@@ -53,12 +53,18 @@ def get_article(id):
 
 @app.route('/add', methods = ['POST'])
 def add_article():
-    title = request.json['title']
-    content = request.json['body']
-    articles = Article(title, content)
-    db.session.add(articles)
-    db.session.commit()
-    return article_schema.jsonify(articles)
+    try:
+        title = request.json['title']
+        content = request.json['content']
+        articles = Article(title, content)
+        db.session.add(articles)
+        db.session.commit()
+        return article_schema.jsonify(articles), 201
+    except KeyError as e:
+        return jsonify({"error": f"Missing key in JSON: {e}"}), 400
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": f"An error occurred: {str(e)}"}), 500
 
 @app.route('/update/<id>', methods = ['PUT'])
 def update_articles(id):

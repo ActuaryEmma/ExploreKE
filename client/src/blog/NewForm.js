@@ -1,49 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './newform.css';
+import { useNavigate } from "react-router-dom"
 
-function NewForm({ title, content, setTitle, setContent,insertArticle}) {
+const NewForm = () => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [isFormValid, setIsFormValid] = useState(true);
+  let navigate = useNavigate();
+
   const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+    const newTitle = e.target.value;
+    setTitle(newTitle);
+    checkFormValidity(newTitle, content);
   };
 
   const handleContentChange = (e) => {
-    setContent(e.target.value);
+    const newContent = e.target.value;
+    setContent(newContent);
+    checkFormValidity(title, newContent);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents the default form submission behavior
-
-    // Call insertArticle function here
-    insertArticle({ title, content }); // Pass the title and content as an object
-
-    // Clear the form fields if needed
-    setTitle('');
-    setContent('');
+  const checkFormValidity = (newTitle, newContent) => {
+    // Check if both title and content are not empty
+    setIsFormValid(newTitle.trim() !== '' && newContent.trim() !== '');
   };
 
-  return (
-    <div className="p-4 border">
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!isFormValid) {
+      alert("Please fill in both 'Title' and 'Content'");
+      return;
+    }
+
+    try {
+      const response = await fetch('/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title, content }),
+      });
+      if (!response.ok) {
+        throw new Error('HTTP error! Status: ${response.status}');
+      }
+      alert("Article Successfully Posted");
+
+      setTitle('');
+      setContent('');
+      
+      navigate('/blog');
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  return(
+    <div>
       <form onSubmit={handleSubmit}>
-        <input
-          className="w-full border rounded mb-2 p-2"
-          type="text"
-          value={title}
-          onChange={handleTitleChange}
-          placeholder="Title"
-        />
-        <textarea
-          className="w-full border rounded p-2"
-          value={content}
-          onChange={handleContentChange}
-          placeholder="Content"
-        />
-        <input
-          className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded mt-2 cursor-pointer"
-          type="submit"
-          value="Send"
-        />
+      <div className='button-container'>
+        <button type="submit"> PUBLISH </button>
+      </div>
+        <div className='style'>
+        <label class="block text-sm font-medium text-green-600">
+          Title 
+          <input type="text" value={title} onChange={e => setTitle(e.target.value)} required />
+        </label>
+        <label>
+          Body
+          <textarea value={content} onChange={e => setContent(e.target.value)} required/>
+        </label>
+        </div>
       </form>
     </div>
   );
-}
-
+};
 export default NewForm;

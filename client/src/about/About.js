@@ -48,10 +48,8 @@ function About(){
             </p>
             <p>Git repository : <a href="https://github.com/ActuaryEmma/ExploreKE" target="_blank">ExploreKe Repo</a></p>
             <p>LinkedIn : <a href="https://www.linkedin.com/in/emma-nyakio/" target="_blank">ActuaryEmma</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/omondii/" target="_blank">omondii</a></p>
             <p>Git repository : <a href="" target="_blank">Brian Omondi</a></p>
-
-
-
 
             </div>
         </div>
